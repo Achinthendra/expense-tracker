@@ -2,7 +2,7 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
 
-    /* Grape wine animated background */
+    /* Keep wine gradient background */
     background: linear-gradient(135deg, #2e0f2a, #5E2750, #8c3a70);
     background-size: 200% 200%;
     animation: gradientMove 8s ease infinite;
@@ -20,27 +20,25 @@ body {
     100% { background-position: 0% 50%; }
 }
 
-/* 🖤 BLACK GLASS CONTAINER */
+/* 🖤 MAIN CONTAINER (PURE BLACK GLASS) */
 .container {
     position: relative;
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
 
-    /* BLACK glass */
-    background: rgba(0, 0, 0, 0.65);
+    background: rgba(0, 0, 0, 0.85); /* STRONG BLACK */
 
     border-radius: 20px;
     padding: 25px;
     width: 400px;
     color: white;
 
-    /* Glow + depth */
     box-shadow: 
-        0 8px 40px rgba(0,0,0,0.9),
+        0 10px 50px rgba(0,0,0,1),
         0 0 25px rgba(168, 50, 90, 0.4);
 }
 
-/* Glossy shine effect */
+/* Glossy shine */
 .container::before {
     content: "";
     position: absolute;
@@ -52,11 +50,29 @@ body {
 
     background: linear-gradient(
         to bottom,
-        rgba(255,255,255,0.15),
+        rgba(255,255,255,0.2),
         transparent
     );
+}
 
-    pointer-events: none;
+/* 🖤 CHATBOT (PURE BLACK GLASS) */
+.chatbot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    padding: 15px;
+    border-radius: 20px;
+
+    backdrop-filter: blur(20px);
+
+    background: rgba(0, 0, 0, 0.9); /* EVEN DARKER */
+
+    color: white;
+
+    box-shadow: 
+        0 10px 50px rgba(0,0,0,1),
+        0 0 20px rgba(168, 50, 90, 0.5);
 }
 
 /* Headings */
@@ -76,13 +92,13 @@ input, select, button {
     outline: none;
 }
 
-/* Dark glass inputs */
+/* Dark inputs */
 input, select {
     background: rgba(255,255,255,0.1);
     color: white;
 }
 
-/* Glowing buttons */
+/* Buttons */
 button {
     background: linear-gradient(135deg, #5E2750, #8c3a70);
     color: white;
@@ -103,25 +119,6 @@ li {
     margin: 5px 0;
     padding: 10px;
     border-radius: 10px;
-}
-
-/* Chatbot (also black glass) */
-.chatbot {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 300px;
-    padding: 15px;
-    border-radius: 20px;
-
-    backdrop-filter: blur(20px);
-    background: rgba(0, 0, 0, 0.7);
-
-    color: white;
-
-    box-shadow: 
-        0 8px 40px rgba(0,0,0,0.9),
-        0 0 20px rgba(168, 50, 90, 0.5);
 }
 
 /* Chatbox */

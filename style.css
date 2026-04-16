@@ -1,104 +1,111 @@
-body {
+* {
     margin: 0;
-    font-family: Arial, sans-serif;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
 
-    background: linear-gradient(135deg, #2e0f2a, #5E2750, #8c3a70);
-    background-size: 200% 200%;
-    animation: gradientMove 8s ease infinite;
-
+body {
     height: 100vh;
     display: flex;
     justify-content: center;
     align-items: center;
-}
-
-@keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* BLACK GLASS */
-.container {
-    backdrop-filter: blur(20px);
-    background: rgba(0, 0, 0, 0.85);
-    border-radius: 20px;
-    padding: 25px;
-    width: 400px;
+    background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
     color: white;
-    box-shadow: 0 10px 50px rgba(0,0,0,1);
 }
 
-/* CHATBOT */
-.chatbot {
+/* Animated Background Glow */
+.background {
     position: fixed;
-    bottom: 20px;
-    right: 20px;
-    width: 300px;
-    padding: 15px;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255,0,150,0.2), transparent);
+    animation: move 8s infinite alternate;
+}
+
+@keyframes move {
+    from { transform: translate(-20%, -20%); }
+    to { transform: translate(20%, 20%); }
+}
+
+/* Main Container */
+.container {
+    backdrop-filter: blur(15px);
+    background: rgba(0, 0, 0, 0.6);
+    padding: 30px;
     border-radius: 20px;
-
-    backdrop-filter: blur(20px);
-    background: rgba(0, 0, 0, 0.9);
-
-    color: white;
-}
-
-/* TEXT */
-h1, h2, h3 {
+    width: 350px;
+    box-shadow: 0 0 25px rgba(0,0,0,0.5);
     text-align: center;
-    color: #f3c6e8;
 }
 
-/* INPUTS */
-input, select, button {
-    width: 100%;
+/* Title */
+h1 {
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+/* Balance Card */
+.balance-card {
+    background: linear-gradient(45deg, #ff416c, #ff4b2b);
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+.balance-card p {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Form */
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input, select {
     padding: 10px;
-    margin: 8px 0;
-    border-radius: 12px;
+    border-radius: 10px;
     border: none;
     outline: none;
 }
 
-/* FIXED DROPDOWN */
-select {
-    background: rgba(255,255,255,0.1);
-    color: white;
-}
-
-/* 🔥 IMPORTANT FIX */
-option {
-    background: black;
-    color: white;
-}
-
-/* INPUT */
-input {
-    background: rgba(255,255,255,0.1);
-    color: white;
-}
-
-/* BUTTON */
 button {
-    background: linear-gradient(135deg, #5E2750, #8c3a70);
-    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    background: #00c9ff;
+    color: black;
+    font-weight: bold;
     cursor: pointer;
+    transition: 0.3s;
 }
 
-/* LIST */
-li {
-    background: rgba(255,255,255,0.08);
-    margin: 5px 0;
-    padding: 10px;
-    border-radius: 10px;
+button:hover {
+    background: #92fe9d;
 }
 
-/* CHATBOX */
-#chatbox {
-    height: 150px;
+/* Expense List */
+ul {
+    list-style: none;
+    margin-top: 20px;
+    max-height: 200px;
     overflow-y: auto;
-    margin-bottom: 10px;
-    background: rgba(255,255,255,0.08);
+}
+
+li {
+    background: rgba(255,255,255,0.1);
     padding: 10px;
     border-radius: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from {opacity: 0; transform: translateY(10px);}
+    to {opacity: 1; transform: translateY(0);}
 }

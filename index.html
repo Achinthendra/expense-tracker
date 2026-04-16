@@ -1,54 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
     <title>Expense Tracker</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
 
+<div class="background"></div>
+
 <div class="container">
+    <h1>💸 Expense Tracker</h1>
 
-    <h1>Expense Tracker</h1>
-    <h3>Total Balance: ₹<span id="balance">0</span></h3>
-
-    <div class="form">
-        <input type="text" id="desc" placeholder="Expense Description">
-        <input type="number" id="amount" placeholder="Amount">
-
-        <select id="category">
-            <option value="Food">Food</option>
-            <option value="Travel">Travel</option>
-            <option value="Shopping">Shopping</option>
-            <option value="Bills">Bills</option>
-            <option value="Other">Other</option>
-        </select>
-
-        <input type="datetime-local" id="time">
-
-        <button onclick="addExpense()">Add Expense</button>
+    <div class="balance-card">
+        <h2>Balance</h2>
+        <p id="balance">₹0</p>
     </div>
 
-    <h2>Expense List</h2>
+    <form id="expense-form">
+        <input type="text" id="desc" placeholder="Description" required>
+        <input type="number" id="amount" placeholder="Amount" required>
+        
+        <select id="category">
+            <option>Food</option>
+            <option>Travel</option>
+            <option>Shopping</option>
+            <option>Bills</option>
+            <option>Other</option>
+        </select>
+
+        <button type="submit">Add Expense</button>
+    </form>
+
     <ul id="list"></ul>
-
-    <h2>Monthly Report</h2>
-    <button onclick="generateReport()">Generate Report</button>
-
-    <div id="report"></div>
-
-</div>
-
-<!-- Chatbot -->
-<div class="chatbot">
-    <h3>AI Expense Assistant</h3>
-    <div id="chatbox"></div>
-
-    <input type="text" id="userInput" placeholder="Ask about your expenses...">
-    <button onclick="sendMessage()">Send</button>
 </div>
 
 <script src="script.js"></script>
-
 </body>
 </html>

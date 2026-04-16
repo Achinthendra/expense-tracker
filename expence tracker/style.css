@@ -1,0 +1,137 @@
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+
+    /* Animated glossy gradient */
+    background: linear-gradient(135deg, #2e0f2a, #5E2750, #8c3a70);
+    background-size: 200% 200%;
+    animation: gradientMove 8s ease infinite;
+
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Smooth gradient animation */
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Glass container with glow */
+.container {
+    position: relative;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 20px;
+    padding: 25px;
+    width: 400px;
+    color: white;
+
+    /* Glow effect */
+    box-shadow: 
+        0 8px 40px rgba(0,0,0,0.6),
+        0 0 25px rgba(168, 50, 90, 0.4);
+}
+
+/* Glossy highlight (top shine) */
+.container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    border-radius: 20px;
+
+    background: linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.25),
+        rgba(255,255,255,0.05),
+        transparent
+    );
+
+    pointer-events: none;
+}
+
+/* Headings */
+h1, h2, h3 {
+    text-align: center;
+    color: #f3c6e8;
+    text-shadow: 0 0 10px rgba(255, 150, 200, 0.4);
+}
+
+/* Inputs */
+input, select, button {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 12px;
+    border: none;
+    outline: none;
+}
+
+/* Glass inputs */
+input, select {
+    background: rgba(255,255,255,0.15);
+    color: white;
+}
+
+/* Glowing buttons */
+button {
+    background: linear-gradient(135deg, #5E2750, #8c3a70);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+
+    box-shadow: 0 0 10px rgba(168, 50, 90, 0.5);
+}
+
+button:hover {
+    background: linear-gradient(135deg, #8c3a70, #b04a8a);
+
+    /* Strong glow on hover */
+    box-shadow: 0 0 20px rgba(255, 120, 180, 0.8);
+}
+
+/* List */
+li {
+    background: rgba(255,255,255,0.12);
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+/* Chatbot */
+.chatbot {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    padding: 15px;
+    border-radius: 20px;
+
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.08);
+
+    color: white;
+
+    /* Glow */
+    box-shadow: 
+        0 8px 40px rgba(0,0,0,0.7),
+        0 0 20px rgba(168, 50, 90, 0.5);
+}
+
+/* Chatbox */
+#chatbox {
+    height: 150px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+    background: rgba(255,255,255,0.1);
+    padding: 10px;
+    border-radius: 10px;
+}

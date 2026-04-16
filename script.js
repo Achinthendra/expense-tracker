@@ -1,31 +1,62 @@
-const form = document.getElementById("expense-form");
-const list = document.getElementById("list");
-const balanceEl = document.getElementById("balance");
+let balance = 0;
+let expenses = [];
 
-let balance = 10000; // starting wallet balance (you can change this)
+function addExpense() {
+    let desc = document.getElementById("desc").value;
+    let amount = parseFloat(document.getElementById("amount").value);
+    let category = document.getElementById("category").value;
 
-form.addEventListener("submit", function(e) {
-    e.preventDefault();
+    if (desc === "" || isNaN(amount)) {
+        alert("Enter valid details");
+        return;
+    }
 
-    const desc = document.getElementById("desc").value;
-    const amount = parseFloat(document.getElementById("amount").value);
-    const category = document.getElementById("category").value;
+    let expense = { desc, amount, category };
+    expenses.push(expense);
 
-    // Subtract expense from balance
     balance -= amount;
-    updateBalance();
+    document.getElementById("balance").innerText = balance;
 
-    const li = document.createElement("li");
-    li.innerHTML = `
-        ${desc} (${category}) 
-        <span>₹${amount}</span>
-    `;
+    let li = document.createElement("li");
+    li.innerText = `${desc} - ₹${amount} (${category})`;
+    document.getElementById("list").appendChild(li);
 
-    list.appendChild(li);
+    document.getElementById("desc").value = "";
+    document.getElementById("amount").value = "";
+}
 
-    form.reset();
-});
+function generateReport() {
+    let total = 0;
+    let cat = {};
 
-function updateBalance() {
-    balanceEl.innerText = "₹" + balance;
+    expenses.forEach(e => {
+        total += e.amount;
+        cat[e.category] = (cat[e.category] || 0) + e.amount;
+    });
+
+    let html = `<p>Total: ₹${total}</p>`;
+    for (let c in cat) {
+        html += `<p>${c}: ₹${cat[c]}</p>`;
+    }
+
+    document.getElementById("report").innerHTML = html;
+}
+
+function sendMessage() {
+    let input = document.getElementById("userInput").value;
+    let chatbox = document.getElementById("chatbox");
+
+    if (!input) return;
+
+    chatbox.innerHTML += `<p><b>You:</b> ${input}</p>`;
+
+    let reply = "Try asking about total expenses";
+
+    if (input.toLowerCase().includes("total")) {
+        let total = expenses.reduce((s, e) => s + e.amount, 0);
+        reply = `Total expenses: ₹${total}`;
+    }
+
+    chatbox.innerHTML += `<p><b>Bot:</b> ${reply}</p>`;
+    document.getElementById("userInput").value = "";
 }

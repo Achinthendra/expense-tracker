@@ -2,7 +2,7 @@ const form = document.getElementById("expense-form");
 const list = document.getElementById("list");
 const balanceEl = document.getElementById("balance");
 
-let balance = 0;
+let balance = 10000; // starting wallet balance (you can change this)
 
 form.addEventListener("submit", function(e) {
     e.preventDefault();
@@ -11,7 +11,8 @@ form.addEventListener("submit", function(e) {
     const amount = parseFloat(document.getElementById("amount").value);
     const category = document.getElementById("category").value;
 
-    balance += amount;
+    // Subtract expense from balance
+    balance -= amount;
     updateBalance();
 
     const li = document.createElement("li");

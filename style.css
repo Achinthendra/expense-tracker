@@ -12,6 +12,7 @@ body {
     align-items: center;
     background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
     color: white;
+    overflow: hidden;
 }
 
 /* Animated Background Glow */
@@ -19,8 +20,8 @@ body {
     position: fixed;
     width: 200%;
     height: 200%;
-    background: radial-gradient(circle, rgba(255,0,150,0.2), transparent);
-    animation: move 8s infinite alternate;
+    background: radial-gradient(circle at center, rgba(255,0,150,0.2), rgba(0,255,255,0.2), transparent);
+    animation: move 10s infinite alternate ease-in-out;
 }
 
 @keyframes move {
@@ -28,15 +29,22 @@ body {
     to { transform: translate(20%, 20%); }
 }
 
-/* Main Container */
+/* Main Container with Glassmorphism */
 .container {
-    backdrop-filter: blur(15px);
-    background: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(20px);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     padding: 30px;
     border-radius: 20px;
     width: 350px;
     box-shadow: 0 0 25px rgba(0,0,0,0.5);
     text-align: center;
+    animation: popUp 0.8s ease;
+}
+
+@keyframes popUp {
+    from {opacity: 0; transform: scale(0.9);}
+    to {opacity: 1; transform: scale(1);}
 }
 
 /* Title */
@@ -51,6 +59,11 @@ h1 {
     padding: 15px;
     border-radius: 15px;
     margin-bottom: 20px;
+}
+
+.balance-card h2 {
+    font-size: 20px;
+    margin-bottom: 5px;
 }
 
 .balance-card p {
@@ -103,6 +116,12 @@ li {
     display: flex;
     justify-content: space-between;
     animation: fadeIn 0.5s ease;
+    transition: 0.3s;
+}
+
+li:hover {
+    background: rgba(255,255,255,0.2);
+    transform: scale(1.02);
 }
 
 @keyframes fadeIn {

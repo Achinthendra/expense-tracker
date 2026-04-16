@@ -2,7 +2,6 @@ body {
     margin: 0;
     font-family: Arial, sans-serif;
 
-    /* Keep wine gradient background */
     background: linear-gradient(135deg, #2e0f2a, #5E2750, #8c3a70);
     background-size: 200% 200%;
     animation: gradientMove 8s ease infinite;
@@ -13,49 +12,24 @@ body {
     align-items: center;
 }
 
-/* Background animation */
 @keyframes gradientMove {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-/* 🖤 MAIN CONTAINER (PURE BLACK GLASS) */
+/* BLACK GLASS */
 .container {
-    position: relative;
     backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-
-    background: rgba(0, 0, 0, 0.85); /* STRONG BLACK */
-
+    background: rgba(0, 0, 0, 0.85);
     border-radius: 20px;
     padding: 25px;
     width: 400px;
     color: white;
-
-    box-shadow: 
-        0 10px 50px rgba(0,0,0,1),
-        0 0 25px rgba(168, 50, 90, 0.4);
+    box-shadow: 0 10px 50px rgba(0,0,0,1);
 }
 
-/* Glossy shine */
-.container::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 35%;
-    border-radius: 20px;
-
-    background: linear-gradient(
-        to bottom,
-        rgba(255,255,255,0.2),
-        transparent
-    );
-}
-
-/* 🖤 CHATBOT (PURE BLACK GLASS) */
+/* CHATBOT */
 .chatbot {
     position: fixed;
     bottom: 20px;
@@ -65,24 +39,18 @@ body {
     border-radius: 20px;
 
     backdrop-filter: blur(20px);
-
-    background: rgba(0, 0, 0, 0.9); /* EVEN DARKER */
+    background: rgba(0, 0, 0, 0.9);
 
     color: white;
-
-    box-shadow: 
-        0 10px 50px rgba(0,0,0,1),
-        0 0 20px rgba(168, 50, 90, 0.5);
 }
 
-/* Headings */
+/* TEXT */
 h1, h2, h3 {
     text-align: center;
     color: #f3c6e8;
-    text-shadow: 0 0 10px rgba(255, 120, 180, 0.4);
 }
 
-/* Inputs */
+/* INPUTS */
 input, select, button {
     width: 100%;
     padding: 10px;
@@ -92,28 +60,32 @@ input, select, button {
     outline: none;
 }
 
-/* Dark inputs */
-input, select {
+/* FIXED DROPDOWN */
+select {
     background: rgba(255,255,255,0.1);
     color: white;
 }
 
-/* Buttons */
+/* 🔥 IMPORTANT FIX */
+option {
+    background: black;
+    color: white;
+}
+
+/* INPUT */
+input {
+    background: rgba(255,255,255,0.1);
+    color: white;
+}
+
+/* BUTTON */
 button {
     background: linear-gradient(135deg, #5E2750, #8c3a70);
     color: white;
     cursor: pointer;
-    transition: 0.3s;
-
-    box-shadow: 0 0 10px rgba(168, 50, 90, 0.5);
 }
 
-button:hover {
-    background: linear-gradient(135deg, #8c3a70, #b04a8a);
-    box-shadow: 0 0 20px rgba(255, 120, 180, 0.8);
-}
-
-/* List */
+/* LIST */
 li {
     background: rgba(255,255,255,0.08);
     margin: 5px 0;
@@ -121,7 +93,7 @@ li {
     border-radius: 10px;
 }
 
-/* Chatbox */
+/* CHATBOX */
 #chatbox {
     height: 150px;
     overflow-y: auto;

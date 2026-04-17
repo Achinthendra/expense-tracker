@@ -1,8 +1,9 @@
+/* BODY */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
 
-    /* CYAN GRADIENT */
+    /* CYAN GRADIENT BACKGROUND */
     background: linear-gradient(135deg, #001f2f, #00cfff, #00ffff);
     background-size: 200% 200%;
     animation: gradientMove 8s ease infinite;
@@ -13,24 +14,49 @@ body {
     align-items: center;
 }
 
+/* ANIMATION */
 @keyframes gradientMove {
     0% { background-position: 0% 50%; }
     50% { background-position: 100% 50%; }
     100% { background-position: 0% 50%; }
 }
 
-/* BLACK GLASS */
+/* HEADER OUTSIDE */
+.header {
+    position: absolute;
+    top: 40px;
+    text-align: center;
+    width: 100%;
+}
+
+.header h1 {
+    color: #aafaff;
+    font-size: 40px;
+    margin-bottom: 5px;
+    text-shadow: 0 0 15px rgba(0,255,255,0.8);
+}
+
+.header h3 {
+    color: white;
+}
+
+/* MAIN BLACK GLASS CONTAINER */
 .container {
     backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+
     background: rgba(0, 0, 0, 0.85);
+
     border-radius: 20px;
     padding: 25px;
     width: 400px;
     color: white;
 
+    margin-top: 120px;
+
     box-shadow: 
         0 10px 50px rgba(0,0,0,1),
-        0 0 25px rgba(0, 255, 255, 0.4); /* CYAN GLOW */
+        0 0 25px rgba(0,255,255,0.4);
 }
 
 /* CHATBOT */
@@ -38,24 +64,26 @@ body {
     position: fixed;
     bottom: 20px;
     right: 20px;
+
     width: 300px;
     padding: 15px;
     border-radius: 20px;
 
     backdrop-filter: blur(20px);
+
     background: rgba(0, 0, 0, 0.9);
 
     color: white;
 
     box-shadow: 
         0 10px 50px rgba(0,0,0,1),
-        0 0 20px rgba(0, 255, 255, 0.5); /* CYAN GLOW */
+        0 0 20px rgba(0,255,255,0.5);
 }
 
-/* TEXT */
-h1, h2, h3 {
+/* HEADINGS INSIDE CARD */
+h2, h3 {
     text-align: center;
-    color: #aafaff; /* cyan text */
+    color: #aafaff;
     text-shadow: 0 0 10px rgba(0,255,255,0.6);
 }
 
@@ -69,7 +97,7 @@ input, select, button {
     outline: none;
 }
 
-/* INPUT */
+/* INPUT FIELD */
 input, select {
     background: rgba(255,255,255,0.1);
     color: white;
@@ -86,6 +114,7 @@ button {
     background: linear-gradient(135deg, #00cfff, #00ffff);
     color: black;
     cursor: pointer;
+    transition: 0.3s;
 
     box-shadow: 0 0 10px rgba(0,255,255,0.6);
 }
@@ -95,6 +124,11 @@ button:hover {
 }
 
 /* LIST */
+ul {
+    list-style: none;
+    padding: 0;
+}
+
 li {
     background: rgba(255,255,255,0.08);
     margin: 5px 0;

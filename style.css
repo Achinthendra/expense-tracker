@@ -1,147 +1,180 @@
-/* BODY */
 body {
     margin: 0;
-    font-family: Arial, sans-serif;
-
-    /* CYAN GRADIENT BACKGROUND */
-    background: linear-gradient(135deg, #001f2f, #00cfff, #00ffff);
-    background-size: 200% 200%;
-    animation: gradientMove 8s ease infinite;
-
-    height: 100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-/* ANIMATION */
-@keyframes gradientMove {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-}
-
-/* HEADER OUTSIDE */
-.header {
-    position: absolute;
-    top: 40px;
+    font-family: Arial;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    color: white;
     text-align: center;
-    width: 100%;
 }
 
-.header h1 {
-    color: #aafaff;
+/* Title */
+.title {
     font-size: 40px;
-    margin-bottom: 5px;
-    text-shadow: 0 0 15px rgba(0,255,255,0.8);
+    margin-top: 20px;
+    text-shadow: 0 0 20px white;
 }
 
-.header h3 {
-    color: white;
-}
+/* Card */
+.card {
+    width: 350px;
+    margin: auto;
+    padding: 20px;
 
-/* MAIN BLACK GLASS CONTAINER */
-.container {
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-
-    background: rgba(0, 0, 0, 0.85);
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(15px);
 
     border-radius: 20px;
-    padding: 25px;
-    width: 400px;
-    color: white;
-
-    margin-top: 120px;
-
-    box-shadow: 
-        0 10px 50px rgba(0,0,0,1),
-        0 0 25px rgba(0,255,255,0.4);
+    box-shadow: 0 0 25px cyan;
 }
 
-/* CHATBOT */
-.chatbot {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-
-    width: 300px;
-    padding: 15px;
-    border-radius: 20px;
-
-    backdrop-filter: blur(20px);
-
-    background: rgba(0, 0, 0, 0.9);
-
-    color: white;
-
-    box-shadow: 
-        0 10px 50px rgba(0,0,0,1),
-        0 0 20px rgba(0,255,255,0.5);
-}
-
-/* HEADINGS INSIDE CARD */
-h2, h3 {
-    text-align: center;
-    color: #aafaff;
-    text-shadow: 0 0 10px rgba(0,255,255,0.6);
-}
-
-/* INPUTS */
-input, select, button {
+/* Inputs */
+input {
     width: 100%;
-    padding: 10px;
-    margin: 8px 0;
-    border-radius: 12px;
-    border: none;
-    outline: none;
-}
+    margin: 10px 0;
+    padding: 12px;
 
-/* INPUT FIELD */
-input, select {
+    border: none;
+    border-radius: 10px;
+
     background: rgba(255,255,255,0.1);
     color: white;
 }
 
-/* FIX DROPDOWN */
-option {
-    background: black;
-    color: white;
-}
-
-/* BUTTON */
+/* Button */
 button {
-    background: linear-gradient(135deg, #00cfff, #00ffff);
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+
+    background: cyan;
     color: black;
+    font-weight: bold;
     cursor: pointer;
-    transition: 0.3s;
-
-    box-shadow: 0 0 10px rgba(0,255,255,0.6);
 }
 
-button:hover {
-    box-shadow: 0 0 20px rgba(0,255,255,1);
-}
-
-/* LIST */
+/* List */
 ul {
     list-style: none;
     padding: 0;
 }
 
 li {
-    background: rgba(255,255,255,0.08);
-    margin: 5px 0;
+    background: rgba(255,255,255,0.1);
+    margin: 5px;
     padding: 10px;
     border-radius: 10px;
 }
 
-/* CHATBOX */
-#chatbox {
-    height: 150px;
-    overflow-y: auto;
-    margin-bottom: 10px;
-    background: rgba(255,255,255,0.08);
-    padding: 10px;
+/* CUSTOM DROPDOWN */
+.dropdown {
+    background: rgba(255,255,255,0.1);
+    padding: 12px;
     border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    margin: 10px 0;
+}
+
+#options {
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 50px;
+
+    background: rgba(0,0,0,0.9);
+    backdrop-filter: blur(10px);
+
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#options div {
+    padding: 10px;
+}
+
+#options div:hover {
+    background: rgba(0,255,255,0.3);
+}
+
+.hidden {
+    display: none;
+}
+
+/* CHATBOT */
+.chatbot {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+
+    width: 280px;
+    height: 350px;
+
+    background: rgba(0,0,0,0.5);
+    backdrop-filter: blur(15px);
+
+    border-radius: 20px;
+    padding: 10px;
+
+    display: flex;
+    flex-direction: column;
+}
+
+#chat-box {
+    flex: 1;
+    overflow-y: auto;
+}
+
+.msg {
+    padding: 8px;
+    margin: 5px;
+    border-radius: 10px;
+}
+
+.user {
+    background: cyan;
+    color: black;
+    text-align: right;
+}
+
+.bot {
+    background: #333;
+}
+
+.chat-input {
+    display: flex;
+    flex-direction: column;   /* stack vertically */
+    gap: 8px;
+}
+
+.chat-input input {
+    flex: 1;
+}
+/* Glossy animated background effect */
+body::before {
+    content: "";
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+
+    background: linear-gradient(
+        120deg,
+        transparent,
+        rgba(255,255,255,0.2),
+        transparent
+    );
+
+    transform: rotate(25deg);
+    animation: bgShine 6s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes bgShine {
+    0% {
+        transform: translateX(-100%) rotate(25deg);
+    }
+    100% {
+        transform: translateX(100%) rotate(25deg);
+    }
 }

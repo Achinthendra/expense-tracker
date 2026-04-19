@@ -1,41 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Expense Tracker</title>
-    <link rel="stylesheet" href="style.css">
-</head>
 <body>
 
 <h1 class="title">Expense Tracker</h1>
 <p id="balance">Total Balance: ₹0</p>
 
-<div class="card">
+<div class="container">
 
-    <input type="text" id="desc" placeholder="Expense Description">
-    <input type="number" id="amount" placeholder="Amount">
+    <!-- MAIN CARD -->
+    <div class="card">
 
-    <!-- CUSTOM DROPDOWN -->
-    <div class="dropdown" onclick="toggleDropdown()">
-        <div id="selected">Food</div>
-        <div id="options" class="hidden">
-            <div onclick="selectOption('Food')">Food</div>
-            <div onclick="selectOption('Travel')">Travel</div>
-            <div onclick="selectOption('Shopping')">Shopping</div>
-            <div onclick="selectOption('Bills')">Bills</div>
+        <input type="text" id="desc" placeholder="Expense Description">
+        <input type="number" id="amount" placeholder="Amount">
+
+        <!-- CUSTOM DROPDOWN -->
+        <div class="dropdown" onclick="toggleDropdown()">
+            <div id="selected">Food</div>
+            <div id="options" class="hidden">
+                <div onclick="selectOption('Food')">Food</div>
+                <div onclick="selectOption('Travel')">Travel</div>
+                <div onclick="selectOption('Shopping')">Shopping</div>
+                <div onclick="selectOption('Bills')">Bills</div>
+            </div>
         </div>
+
+        <button onclick="addExpense()">Add Expense</button>
+
+        <h3>Expenses</h3>
+        <ul id="list"></ul>
+
     </div>
-
-    <button onclick="addExpense()">Add Expense</button>
-
-    <h3>Expenses</h3>
-    <ul id="list"></ul>
 
 </div>
 
 <!-- CHATBOT -->
 <div class="chatbot">
     <h3>AI Assistant</h3>
+
     <div id="chat-box"></div>
 
     <div class="chat-input">
@@ -46,4 +45,3 @@
 
 <script src="script.js"></script>
 </body>
-</html>

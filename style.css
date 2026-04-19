@@ -6,17 +6,23 @@ body {
     text-align: center;
 }
 
-/* Title */
+/* TITLE */
 .title {
     font-size: 40px;
     margin-top: 20px;
-    text-shadow: 0 0 20px white;
 }
 
-/* Card */
+/* CENTER CONTAINER */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+/* CARD */
 .card {
     width: 350px;
-    margin: auto;
     padding: 20px;
 
     background: rgba(0,0,0,0.4);
@@ -26,7 +32,7 @@ body {
     box-shadow: 0 0 25px cyan;
 }
 
-/* Inputs */
+/* INPUTS */
 input {
     width: 100%;
     margin: 10px 0;
@@ -39,10 +45,11 @@ input {
     color: white;
 }
 
-/* Button */
+/* BUTTON */
 button {
     width: 100%;
     padding: 12px;
+
     border: none;
     border-radius: 10px;
 
@@ -52,7 +59,7 @@ button {
     cursor: pointer;
 }
 
-/* List */
+/* LIST */
 ul {
     list-style: none;
     padding: 0;
@@ -65,7 +72,7 @@ li {
     border-radius: 10px;
 }
 
-/* CUSTOM DROPDOWN */
+/* DROPDOWN */
 .dropdown {
     background: rgba(255,255,255,0.1);
     padding: 12px;
@@ -78,14 +85,11 @@ li {
 #options {
     position: absolute;
     width: 100%;
-    left: 0;
     top: 50px;
+    left: 0;
 
     background: rgba(0,0,0,0.9);
-    backdrop-filter: blur(10px);
-
     border-radius: 10px;
-    overflow: hidden;
 }
 
 #options div {
@@ -119,11 +123,13 @@ li {
     flex-direction: column;
 }
 
+/* CHAT BOX */
 #chat-box {
     flex: 1;
     overflow-y: auto;
 }
 
+/* MESSAGES */
 .msg {
     padding: 8px;
     margin: 5px;
@@ -140,41 +146,9 @@ li {
     background: #333;
 }
 
+/* CHAT INPUT FIX (STACKED) */
 .chat-input {
     display: flex;
-    flex-direction: column;   /* stack vertically */
+    flex-direction: column;
     gap: 8px;
-}
-
-.chat-input input {
-    flex: 1;
-}
-/* Glossy animated background effect */
-body::before {
-    content: "";
-    position: fixed;
-    top: -50%;
-    left: -50%;
-    width: 200%;
-    height: 200%;
-
-    background: linear-gradient(
-        120deg,
-        transparent,
-        rgba(255,255,255,0.2),
-        transparent
-    );
-
-    transform: rotate(25deg);
-    animation: bgShine 6s linear infinite;
-    pointer-events: none;
-}
-
-@keyframes bgShine {
-    0% {
-        transform: translateX(-100%) rotate(25deg);
-    }
-    100% {
-        transform: translateX(100%) rotate(25deg);
-    }
 }

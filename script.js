@@ -1,91 +1,95 @@
-// 🔥 GOOGLE SHEETS API URL
-const API_URL = "https://script.google.com/macros/s/AKfycbzBcbaRDa2YSXmz79SK9NvhqDp-egxb4mjcFYtFj9vi9IJs1Nb-sY58IucGn7yopsfm/exec";
+const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbzBcbaRDa2YSXmz79SK9NvhqDp-egxb4mjcFYtFj9vi9IJs1Nb-sY58IucGn7yopsfm/exec";
 
-let balance = 0;
-let expenses = [];
+let selectedCategory = "Food";
 
-// ✅ ADD EXPENSE
-function addExpense() {
-    let desc = document.getElementById("desc").value;
-    let amount = parseFloat(document.getElementById("amount").value);
-    let category = document.getElementById("category").value;
-    let time = document.getElementById("time").value;
-
-    if (desc === "" || isNaN(amount)) {
-        alert("Enter valid details");
-        return;
-    }
-
-    let expense = { desc, amount, category, time };
-    expenses.push(expense);
-
-    // Update balance
-    balance -= amount;
-    document.getElementById("balance").innerText = balance;
-
-    // Add to UI
-    let li = document.createElement("li");
-    li.innerText = `${desc} - ₹${amount} (${category})`;
-    document.getElementById("list").appendChild(li);
-
-    // 🔥 SEND DATA TO GOOGLE SHEETS
-    fetch(API_URL, {
-        method: "POST",
-        body: JSON.stringify(expense),
-        headers: {
-            "Content-Type": "application/json"
-        }
-    })
-    .then(res => res.json())
-    .then(data => console.log("Saved to Sheets:", data))
-    .catch(err => console.error("Error:", err));
-
-    // Clear inputs
-    document.getElementById("desc").value = "";
-    document.getElementById("amount").value = "";
+// DROPDOWN
+function toggleDropdown() {
+    document.getElementById("options").classList.toggle("hidden");
 }
 
-// ✅ GENERATE REPORT
-function generateReport() {
-    let total = 0;
-    let cat = {};
+function selectOption(value) {
+    selectedCategory = value;
+    document.getElementById("selected").innerText = value;
+    document.getElementById("options").classList.add("hidden");
+}
 
-    expenses.forEach(e => {
-        total += e.amount;
-        cat[e.category] = (cat[e.category] || 0) + e.amount;
+// ADD EXPENSE
+async function addExpense() {
+    const desc = document.getElementById("desc").value;
+    const amount = document.getElementById("amount").value;
+
+    await fetch(WEB_APP_URL, {
+        method: "POST",
+        body: JSON.stringify({
+            description: desc,
+            amount: amount,
+            category: selectedCategory
+        })
     });
 
-    let html = `<p>Total: ₹${total}</p>`;
-    for (let c in cat) {
-        html += `<p>${c}: ₹${cat[c]}</p>`;
-    }
-
-    document.getElementById("report").innerHTML = html;
+    loadExpenses();
 }
 
-// ✅ CHATBOT
-function sendMessage() {
-    let input = document.getElementById("userInput").value;
-    let chatbox = document.getElementById("chatbox");
+// LOAD DATA
+async function loadExpenses() {
+    const res = await fetch(WEB_APP_URL);
+    const data = await res.json();
 
-    if (!input) return;
+    const list = document.getElementById("list");
+    const balance = document.getElementById("balance");
 
-    chatbox.innerHTML += `<p><b>You:</b> ${input}</p>`;
+    list.innerHTML = "";
 
-    let reply = "Try asking about total expenses";
+    let total = 0;
 
-    if (input.toLowerCase().includes("total")) {
-        let total = expenses.reduce((s, e) => s + e.amount, 0);
-        reply = `Total expenses: ₹${total}`;
+    for (let i = 1; i < data.length; i++) {
+        const li = document.createElement("li");
+        li.innerText = `${data[i][1]} - ₹${data[i][2]} (${data[i][3]})`;
+        list.appendChild(li);
+
+        total += Number(data[i][2]);
     }
 
-    if (input.toLowerCase().includes("food")) {
-        let total = expenses
-            .filter(e => e.category === "Food")
-            .reduce((s, e) => s + e.amount, 0);
-        reply = `Food expenses: ₹${total}`;
-    }
-
-    chatbox.innerHTML += `<p><b>Bot:</b> ${reply}</p>`;
-    document.getElementById("userInput").value = "";
+    balance.innerText = "Total Balance: ₹" + total;
 }
+
+// CHATBOT
+async function sendMessage() {
+    const input = document.getElementById("chat-input");
+    const msg = input.value.toLowerCase();
+    input.value = "";
+
+    const chatBox = document.getElementById("chat-box");
+
+    chatBox.innerHTML += `<div class="msg user">${msg}</div>`;
+
+    const res = await fetch(WEB_APP_URL);
+    const data = await res.json();
+
+    let total = 0;
+    let food = 0;
+
+    for (let i = 1; i < data.length; i++) {
+        const amount = Number(data[i][2]);
+        total += amount;
+
+        if (data[i][3].toLowerCase() === "food") {
+            food += amount;
+        }
+    }
+
+    let reply = "Try: total or food";
+
+    if (msg.includes("total")) {
+        reply = "Total spending is ₹" + total;
+    }
+
+    if (msg.includes("food")) {
+        reply = "Food spending is ₹" + food;
+    }
+
+    chatBox.innerHTML += `<div class="msg bot">${reply}</div>`;
+}
+
+// LOAD ON START
+loadExpenses();

@@ -1,57 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Expense Tracker</title>
-
-    <!-- THIS LINE FIXES YOUR PROBLEM -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-<h1 class="title">Expense Tracker</h1>
-<p id="balance">Total Balance: ₹0</p>
+<!-- HEADER -->
+<div class="header">
+    <h1>Expense Tracker</h1>
+    <h3>Total Balance: ₹<span id="balance">0</span></h3>
+</div>
 
+<!-- MAIN CONTAINER -->
 <div class="container">
 
-    <!-- MAIN CARD -->
-    <div class="card">
-
+    <div class="form">
         <input type="text" id="desc" placeholder="Expense Description">
         <input type="number" id="amount" placeholder="Amount">
 
-        <!-- CUSTOM DROPDOWN -->
-        <div class="dropdown" onclick="toggleDropdown()">
-            <div id="selected">Food</div>
-            <div id="options" class="hidden">
-                <div onclick="selectOption('Food')">Food</div>
-                <div onclick="selectOption('Travel')">Travel</div>
-                <div onclick="selectOption('Shopping')">Shopping</div>
-                <div onclick="selectOption('Bills')">Bills</div>
-            </div>
-        </div>
+        <select id="category">
+            <option value="Food">Food</option>
+            <option value="Travel">Travel</option>
+            <option value="Shopping">Shopping</option>
+            <option value="Bills">Bills</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <input type="datetime-local" id="time">
 
         <button onclick="addExpense()">Add Expense</button>
-
-        <h3>Expenses</h3>
-        <ul id="list"></ul>
-
     </div>
+
+    <h2>Expense List</h2>
+    <ul id="list"></ul>
+
+    <h2>Monthly Report</h2>
+    <button onclick="generateReport()">Generate Report</button>
+
+    <div id="report"></div>
 
 </div>
 
 <!-- CHATBOT -->
 <div class="chatbot">
-    <h3>AI Assistant</h3>
+    <h3>AI Expense Assistant</h3>
+    <div id="chatbox"></div>
 
-    <div id="chat-box"></div>
-
-    <div class="chat-input">
-        <input type="text" id="chat-input" placeholder="Ask something...">
-        <button onclick="sendMessage()">Send</button>
-    </div>
+    <input type="text" id="userInput" placeholder="Ask about your expenses...">
+    <button onclick="sendMessage()">Send</button>
 </div>
 
 <script src="script.js"></script>

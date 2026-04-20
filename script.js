@@ -1,5 +1,5 @@
 // 🔥 GOOGLE SHEETS API URL
-const API_URL = "PASTE_YOUR_WEB_APP_URL_HERE";
+const API_URL = "https://script.google.com/macros/s/AKfycbzBcbaRDa2YSXmz79SK9NvhqDp-egxb4mjcFYtFj9vi9IJs1Nb-sY58IucGn7yopsfm/exec";
 
 let balance = 0;
 let expenses = [];
